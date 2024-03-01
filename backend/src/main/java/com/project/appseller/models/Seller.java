@@ -1,5 +1,9 @@
 package com.project.appseller.models;
 
+import java.io.Serializable;
+
+import com.project.appseller.dtos.SellerResponseDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TBL_SELLER")
-public class Seller {
+public class Seller implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +31,14 @@ public class Seller {
     @Column(nullable = false)
     private Integer gender;
 
-    public Seller(){}
+    public Seller() {}
+    
+    public Seller(String name, Double salary, Double bonus, Integer gender) {
+        this.name = name;
+        this.salary = salary;
+        this.bonus = bonus;
+        this.gender = gender;
+    }
 
     public Seller(Long id, String name, Double salary, Double bonus, Integer gender) {
         this.id = id;
@@ -75,6 +86,18 @@ public class Seller {
     
     public void setGender(Integer gender) {
         this.gender = gender;
+    }
+
+    public SellerResponseDTO toDTO() {
+        
+        SellerResponseDTO dto = new SellerResponseDTO();
+        dto.setId(id);
+        dto.setName(name);
+        dto.setSalary(salary);
+        dto.setBonus(bonus);
+        dto.setGender(gender);
+
+        return dto;
     }
 
     @Override

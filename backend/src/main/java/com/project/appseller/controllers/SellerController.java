@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.project.appseller.models.Seller;
+import com.project.appseller.dtos.SellerRequestDTO;
+import com.project.appseller.dtos.SellerResponseDTO;
 import com.project.appseller.services.SellerService;
 
 @RestController
@@ -28,23 +29,23 @@ public class SellerController {
     private SellerService sellerService;
     
     @GetMapping
-    public ResponseEntity<List<Seller>> getSellers() {
+    public ResponseEntity<List<SellerResponseDTO>> getSellers() {
         
         return ResponseEntity.ok(sellerService.getAll());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Seller> getSeller(@PathVariable long id) {
+    public ResponseEntity<SellerResponseDTO> getSeller(@PathVariable long id) {
 
-        Seller seller = sellerService.getById(id);
+        SellerResponseDTO seller = sellerService.getById(id);
         
         return ResponseEntity.ok(seller);
     }
 
     @PostMapping
-    public ResponseEntity<Seller> saveSeller(@RequestBody Seller seller) {
+    public ResponseEntity<SellerResponseDTO> saveSeller(@RequestBody SellerRequestDTO seller) {
         
-        Seller newSeller = sellerService.save(seller);
+        SellerResponseDTO newSeller = sellerService.save(seller);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -56,7 +57,7 @@ public class SellerController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> updateSeller(@PathVariable long id, @RequestBody Seller seller) {
+    public ResponseEntity<Void> updateSeller(@PathVariable long id, @RequestBody SellerRequestDTO seller) {
 
         sellerService.updateById(id, seller);
 

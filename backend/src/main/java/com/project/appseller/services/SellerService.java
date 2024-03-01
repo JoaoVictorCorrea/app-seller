@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.appseller.dtos.SellerRequestDTO;
+import com.project.appseller.dtos.SellerResponseDTO;
 import com.project.appseller.models.Seller;
 import com.project.appseller.repositories.SellerRepository;
 
@@ -16,35 +18,38 @@ public class SellerService {
     @Autowired
     private SellerRepository sellerRepository;
 
-    public List<Seller> getAll() {
+    public List<SellerResponseDTO> getAll() {
 
-        return sellerRepository.findAll();
+        return sellerRepository.findAll()
+                               .stream()
+                               .map(s -> s.toDTO())
+                               .toList();
     }
     
-    public Seller getById(long id) {
+    public SellerResponseDTO getById(long id) {
 
         Seller seller = sellerRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Seller not found"));
 
-        return seller;
+        return seller.toDTO();
     }
     
-    public Seller save(Seller seller) {
+    public SellerResponseDTO save(SellerRequestDTO seller) {
 
-        Seller newSeller = sellerRepository.save(seller);
+        Seller newSeller = sellerRepository.save(seller.toEntity());
 
-        return newSeller;
+        return newSeller.toDTO();
     }
     
-    public void updateById(long id, Seller seller) {
+    public void updateById(long id, SellerRequestDTO sellerUpdate) {
 
-        Seller sellerUpdate = sellerRepository.getReferenceById(id);
-        sellerUpdate.setName(seller.getName());
-        sellerUpdate.setSalary(seller.getSalary());
-        sellerUpdate.setBonus(seller.getBonus());
-        sellerUpdate.setGender(seller.getGender());
+        Seller seller = sellerRepository.getReferenceById(id);
+        seller.setName(sellerUpdate.getName());
+        seller.setSalary(sellerUpdate.getSalary());
+        seller.setBonus(sellerUpdate.getBonus());
+        seller.setGender(sellerUpdate.getGender());
 
-        save(sellerUpdate);
+        sellerRepository.save(seller);
     }
     
     public void deleteById(long id) {
