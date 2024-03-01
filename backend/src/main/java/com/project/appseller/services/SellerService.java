@@ -43,13 +43,18 @@ public class SellerService {
     
     public void updateById(long id, SellerRequestDTO sellerUpdate) {
 
-        Seller seller = sellerRepository.getReferenceById(id);
-        seller.setName(sellerUpdate.getName());
-        seller.setSalary(sellerUpdate.getSalary());
-        seller.setBonus(sellerUpdate.getBonus());
-        seller.setGender(sellerUpdate.getGender());
+        try{
+            Seller seller = sellerRepository.getReferenceById(id);
+            seller.setName(sellerUpdate.getName());
+            seller.setSalary(sellerUpdate.getSalary());
+            seller.setBonus(sellerUpdate.getBonus());
+            seller.setGender(sellerUpdate.getGender());
 
-        sellerRepository.save(seller);
+            sellerRepository.save(seller);
+        }
+        catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("Seller not found");
+        }
     }
     
     public void deleteById(long id) {
