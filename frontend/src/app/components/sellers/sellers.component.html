@@ -1,0 +1,31 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <table class="table" id="sellersTable">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Salário</th>
+                        <th scope="col">Bonus (%)</th>
+                        <th scope="col">Gênero</th>
+                        <th scope="col" class="text-end">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" *ngFor="let seller of sellers">
+                        <td>{{seller.id}}</td>
+                        <td>{{seller.name}}</td>
+                        <td>{{seller.salary | currency: 'BRL'}}</td>
+                        <td>{{seller.bonus}}</td>
+                        <td>{{seller.gender}}</td>
+                        <td class="text-end">
+                            <button class="btn btn-dark p-1 me-1"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-dark p-1"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
