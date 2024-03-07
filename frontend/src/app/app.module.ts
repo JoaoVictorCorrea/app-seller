@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { LOCALE_ID } from '@angular/core';
@@ -13,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SellersComponent } from './components/sellers/sellers.component';
 import { registerLocaleData } from '@angular/common';
+import { SellerFormComponent } from './components/seller-form/seller-form.component';
 
 registerLocaleData(localPt, 'pt');
 
@@ -23,12 +25,14 @@ registerLocaleData(localPt, 'pt');
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    SellersComponent
+    SellersComponent,
+    SellerFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt'}

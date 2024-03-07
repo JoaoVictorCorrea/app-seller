@@ -30,5 +30,16 @@ export class SellersComponent {
       bonus: 0.3,
       gender: 1
     }
-  ]
+  ];
+
+  seller: Seller = {} as Seller;
+
+  save() {
+    this.seller.id = this.sellers.length + 1;
+    this.sellers.push(this.seller);
+
+    this.seller = {} as Seller;
+
+    console.log(this.seller);
+  }
 }

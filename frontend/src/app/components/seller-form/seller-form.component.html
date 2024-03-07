@@ -1,0 +1,78 @@
+<div *ngIf="seller" class="row">
+    <div class="text-center">
+        <h1>Formulário</h1>
+    </div>
+    <div class="col-md-10 offset-md-3">
+        <form #formSeller="ngForm">
+            <fieldset>
+                <div class="row mt-3">
+                    <label for="inputId" class="col-sm-1 col-form-label">Id</label>
+                </div>
+    
+                <div class="row">
+                    <div class="col-sm-1">
+                        <input type="text" class="form-control" name="id" id="inputId" [(ngModel)]="seller.id">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="row mt-3">
+                    <label for="inputName" class="col-sm-2 col-form-label">Nome</label>
+                </div>
+    
+                <div class="row">
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="name" id="inputName" placeholder="Nome Completo" [(ngModel)]="seller.name" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="row mt-3">
+                    <label for="inputSalary" class="col-sm-5 col-form-label">Salário</label>
+                    <label for="inputBonus" class="col-sm-2 col-form-label">Bônus</label>
+                </div>
+    
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="salary" id="inputSalary" placeholder="0,00" [(ngModel)]="seller.salary" required>
+                    </div>
+
+                    <div class="col-sm-3 offset-md-1">
+                        <input type="text" class="form-control" name="bonus" id="inputBonus" placeholder="0%" [(ngModel)]="seller.bonus" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="row mt-3">
+                    <label class="col-sm-2 col-form-label">Gênero:</label>
+                </div>
+    
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-check">
+                            <input class="form-check-input" name="gender" type="radio" value=0 id="radioGenderFemale" [(ngModel)]="seller.gender" required="">
+                            <label class="form-check-label" for="radioGender">
+                                Feminino
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" name="gender" type="radio" value=1 id="radioGenderMale" [(ngModel)]="seller.gender" required="">
+                            <label class="form-check-label" for="radioGender">
+                                Masculino
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="row mb-3 mt-3">
+                <div class="col-auto offset-md-3">
+                    <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="formSeller.invalid">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,6 +1,14 @@
 <div class="container mt-3">
+
+    <app-seller-form [seller]="seller" (saveEmitter)="save()"></app-seller-form>
+
     <div class="row">
-        <div class="col-md-10 offset-md-1">
+
+        <div class="text-center">
+            <h1>Tabela de Sellers</h1>
+        </div>
+
+        <div class="col-md-10 offset-md-1 mt-3">
             <table class="table" id="sellersTable">
                 <thead>
                     <tr class="text-center">
