@@ -3,7 +3,7 @@
         <h1>Cadastro</h1>
     </div>
     <div class="col-md-9 offset-md-3">
-        <form #formSeller="ngForm">
+        <form [formGroup]="formGroupSeller" #ngFormSeller="ngForm">
             <fieldset *ngIf="seller.id">
                 <div class="row mt-3">
                     <label for="inputId" class="col-sm-1 col-form-label">Id</label>
@@ -11,7 +11,7 @@
     
                 <div class="row">
                     <div class="col-sm-1">
-                        <input type="text" class="form-control" name="id" id="inputId" [(ngModel)]="seller.id">
+                        <input type="text" class="form-control" name="id" id="inputId" formControlName="id" readonly>
                     </div>
                 </div>
             </fieldset>
@@ -23,7 +23,12 @@
     
                 <div class="row">
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="name" id="inputName" placeholder="Nome Completo" [(ngModel)]="seller.name" required>
+                        <input type="text" class="form-control" name="name" id="inputName" placeholder="Nome Completo" formControlName="name">
+                        <div *ngIf="ngFormSeller.submitted">
+                            <small *ngIf="sfgName?.errors?.['required']" class="form-text text-danger">*Nome é requirido!</small>
+                            <small *ngIf="sfgName?.errors?.['minlength']" class="form-text text-danger">*Tamanho mínimo de 5 caracteres!</small>
+                            <small *ngIf="sfgName?.errors?.['maxlength']" class="form-text text-danger">*Tamanho máximo de 255 caracteres!</small>
+                        </div>
                     </div>
                 </div>
             </fieldset>
@@ -31,16 +36,25 @@
             <fieldset>
                 <div class="row mt-3">
                     <label for="inputSalary" class="col-sm-5 col-form-label">Salário</label>
-                    <label for="inputBonus" class="col-sm-2 col-form-label">Bônus</label>
+                    <label for="inputBonus" class="col-sm-2 col-form-label">Bônus (%)</label>
                 </div>
     
                 <div class="row">
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" name="salary" id="inputSalary" placeholder="0,00" [(ngModel)]="seller.salary" required>
+                        <input type="text" class="form-control" name="salary" id="inputSalary" placeholder="0.00" formControlName="salary">
+                        <div *ngIf="ngFormSeller.submitted">
+                            <small *ngIf="sfgSalary?.errors?.['required']" class="form-text text-danger">*Salário é requirido!</small>
+                            <small *ngIf="sfgSalary?.errors?.['min']" class="form-text text-danger">*Valor mínimo de 1.00!</small>
+                        </div>
                     </div>
 
                     <div class="col-sm-3 offset-md-1">
-                        <input type="text" class="form-control" name="bonus" id="inputBonus" placeholder="0%" [(ngModel)]="seller.bonus" required>
+                        <input type="text" class="form-control" name="bonus" id="inputBonus" placeholder="0" formControlName="bonus">
+                        <div *ngIf="ngFormSeller.submitted">
+                            <small *ngIf="sfgBonus?.errors?.['required']" class="form-text text-danger">*Bônus é requirido!</small>
+                            <small *ngIf="sfgBonus?.errors?.['min']" class="form-text text-danger">*Valor mínimo de 0!</small> <br>
+                            <small *ngIf="sfgBonus?.errors?.['min']" class="form-text text-danger">*Valor máximo de 100!</small>
+                        </div>
                     </div>
                 </div>
             </fieldset>
@@ -53,16 +67,19 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-check">
-                            <input class="form-check-input" name="gender" type="radio" value="0" id="radioGenderFemale" [(ngModel)]="seller.gender" required>
+                            <input class="form-check-input" name="gender" type="radio" value="0" id="radioGenderFemale" formControlName="gender">
                             <label class="form-check-label" for="radioGenderFemale">
                                 Feminino
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" name="gender" type="radio" value="1" id="radioGenderMale" [(ngModel)]="seller.gender" required>
+                            <input class="form-check-input" name="gender" type="radio" value="1" id="radioGenderMale" formControlName="gender">
                             <label class="form-check-label" for="radioGenderMale">
                                 Masculino
                             </label>
+                        </div>
+                        <div *ngIf="ngFormSeller.submitted">
+                            <small *ngIf="sfgGender?.errors?.['required']" class="form-text text-danger">*Gênero é requirido!</small>
                         </div>
                     </div>
                 </div>
@@ -70,7 +87,7 @@
 
             <div class="row mb-3 mt-3 text-center">
                 <div class="col-md-8 offset-md-0">
-                    <button type="submit" class="btn btn-primary me-1" (click)="save()" [disabled]="formSeller.invalid">Salvar</button>
+                    <button type="submit" class="btn btn-primary me-1" (click)="save()">Salvar</button>
                     <button type="button" class="btn btn-danger" (click)="cancel()">Cancelar</button>
                 </div>
             </div>
