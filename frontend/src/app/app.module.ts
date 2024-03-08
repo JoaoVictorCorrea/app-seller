@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { LOCALE_ID } from '@angular/core';
@@ -32,7 +33,8 @@ registerLocaleData(localPt, 'pt');
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt'}

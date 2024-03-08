@@ -15,6 +15,10 @@ export class SellerFormComponent {
   saveEmitter = new EventEmitter();
 
   save() {
-    this.saveEmitter.emit();
+    this.saveEmitter.emit(true);
+  }
+
+  cancel() {
+    this.saveEmitter.emit(false);
   }
 }

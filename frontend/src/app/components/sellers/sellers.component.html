@@ -1,11 +1,11 @@
 <div class="container mt-3 justify-content-center">
 
-    <app-seller-form [seller]="seller" (saveEmitter)="save()"></app-seller-form>
+    <app-seller-form *ngIf="showForm" [seller]="seller" (saveEmitter)="save($event)"></app-seller-form>
 
-    <div class="row">
+    <div *ngIf="!showForm" class="row">
 
         <div class="text-center">
-            <h1>Tabela de Sellers</h1>
+            <h1>Tabela</h1>
         </div>
 
         <div class="col-md-10 offset-md-1 mt-3">
@@ -26,20 +26,36 @@
                         <td>{{seller.name}}</td>
                         <td>{{seller.salary | currency: 'BRL'}}</td>
                         <td>{{seller.bonus}}</td>
-                        <td>{{seller.gender}}</td>
+                        <td>
+                            <span *ngIf="seller.gender == 0" class="text-danger">Feminino</span>
+                            <span *ngIf="seller.gender == 1" class="text-primary">Masculino</span>
+                        </td>
                         <td class="text-end">
-                            <button class="btn btn-dark p-1 me-1"><i class="bi bi-pencil"></i></button>
-                            <button class="btn btn-dark p-1"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-dark p-1 me-1" (click)="edit(seller)"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-dark p-1" (click)="delete(confirmModal, seller)"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-        <div class="row text-center mt-3">
-            <div class="col-md-6 offset-md-3">
-                <button class="btn btn-dark w-50">Novo</button>
-            </div>
+    </div>
+    <div *ngIf="!showForm" class="row text-center mt-3">
+        <div class="col-md-12">
+            <button class="btn btn-dark w-25" (click)="create()">Novo</button>
         </div>
     </div>
+
+    <ng-template #confirmModal let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title">Remover Vendedor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.close()"></button>
+        </div>
+        <div class="modal-body">
+            <p>Deseja remover o vendedor #{{deleteSeller.id}}?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="modal.close(true)">Confirmar</button>
+            <button type="button" class="btn btn-primary" (click)="modal.close()">Cancelar</button>
+        </div>
+    </ng-template>
 </div>

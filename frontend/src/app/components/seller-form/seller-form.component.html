@@ -1,10 +1,10 @@
 <div *ngIf="seller" class="row">
     <div class="text-center">
-        <h1>Formulário</h1>
+        <h1>Cadastro</h1>
     </div>
-    <div class="col-md-10 offset-md-3">
+    <div class="col-md-9 offset-md-3">
         <form #formSeller="ngForm">
-            <fieldset>
+            <fieldset *ngIf="seller.id">
                 <div class="row mt-3">
                     <label for="inputId" class="col-sm-1 col-form-label">Id</label>
                 </div>
@@ -53,14 +53,14 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-check">
-                            <input class="form-check-input" name="gender" type="radio" value=0 id="radioGenderFemale" [(ngModel)]="seller.gender" required="">
-                            <label class="form-check-label" for="radioGender">
+                            <input class="form-check-input" name="gender" type="radio" value="0" id="radioGenderFemale" [(ngModel)]="seller.gender" required>
+                            <label class="form-check-label" for="radioGenderFemale">
                                 Feminino
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" name="gender" type="radio" value=1 id="radioGenderMale" [(ngModel)]="seller.gender" required="">
-                            <label class="form-check-label" for="radioGender">
+                            <input class="form-check-input" name="gender" type="radio" value="1" id="radioGenderMale" [(ngModel)]="seller.gender" required>
+                            <label class="form-check-label" for="radioGenderMale">
                                 Masculino
                             </label>
                         </div>
@@ -69,8 +69,8 @@
             </fieldset>
 
             <div class="row mb-3 mt-3 text-center">
-                <div class="col-md-7 offset-md-0">
-                    <button type="submit" class="btn btn-primary me-1" (click)="save()" [disabled]="formSeller.invalid">Cadastrar</button>
+                <div class="col-md-8 offset-md-0">
+                    <button type="submit" class="btn btn-primary me-1" (click)="save()" [disabled]="formSeller.invalid">Salvar</button>
                     <button type="button" class="btn btn-danger" (click)="cancel()">Cancelar</button>
                 </div>
             </div>
