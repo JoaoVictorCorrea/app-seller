@@ -1,6 +1,34 @@
 # AppSeller
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+![](https://i.imgur.com/mBkemZW.png)
+
+## About this Project
+
+The idea of the App is:
+
+"Manipulate seller registrations in a simple way."
+
+PS: Seller Registration was just the context chosen by me for this project, but all the code inside this application can be reused for any application that has CRUD as a domain, so you can reuse everything here in your next CRUD or anything inside this context!
+
+## Why?
+
+This project is part of my personal portfolio and my assessment on the [BootcamoDevJr](https://bootcampdevjr.com/) course, so I'll be happy if you can give me any feedback on the project, code, structure or that you can report that could make me a better developer!
+
+Email-me: correa.joaov25@gmail.com
+
+Connect with me at [LinkedIn](https://www.linkedin.com/in/joaovcorrea/).
+
+Also, you can use this Project as you wish, be for study, be for make improvements or earn money with it!
+
+It's free!
+
+## Some Observations about this App
+
+1 - This is a monorepo, that is, it contains both the backend and the frontend in the same repository.
+
+2 -The Home screen is for UI issues only.
+
+3 - He is responsive.
 
 ## Development server
 
