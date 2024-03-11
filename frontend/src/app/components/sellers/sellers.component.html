@@ -15,8 +15,8 @@
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Salário</th>
-                        <th scope="col">Bonus (%)</th>
-                        <th scope="col">Gênero</th>
+                        <th scope="col" class="d-none d-sm-table-cell">Bonus (%)</th>
+                        <th scope="col" class="d-none d-sm-table-cell">Gênero</th>
                         <th scope="col" class="text-end">Ações</th>
                     </tr>
                 </thead>
@@ -25,8 +25,8 @@
                         <td>{{seller.id}}</td>
                         <td>{{seller.name}}</td>
                         <td>{{seller.salary | currency: 'BRL'}}</td>
-                        <td>{{seller.bonus}}</td>
-                        <td>
+                        <td class="d-none d-sm-table-cell">{{seller.bonus}}</td>
+                        <td class="d-none d-sm-table-cell">
                             <span *ngIf="seller.gender == 0" class="text-danger">Feminino</span>
                             <span *ngIf="seller.gender == 1" class="text-primary">Masculino</span>
                         </td>

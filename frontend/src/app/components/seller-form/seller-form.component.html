@@ -35,12 +35,12 @@
 
             <fieldset>
                 <div class="row mt-3">
-                    <label for="inputSalary" class="col-sm-5 col-form-label">Salário</label>
-                    <label for="inputBonus" class="col-sm-2 col-form-label">Bônus (%)</label>
+                    <label for="inputSalary" class="col-sm-5 col-7 col-form-label">Salário</label>
+                    <label for="inputBonus" class="col-sm-2 col-5 col-form-label">Bônus (%)</label>
                 </div>
     
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 col-7">
                         <input type="text" class="form-control" name="salary" id="inputSalary" placeholder="0.00" formControlName="salary">
                         <div *ngIf="ngFormSeller.submitted">
                             <small *ngIf="sfgSalary?.errors?.['required']" class="form-text text-danger">*Salário é requirido!</small>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-3 offset-md-1">
+                    <div class="col-sm-3 col-5 offset-md-1">
                         <input type="text" class="form-control" name="bonus" id="inputBonus" placeholder="0" formControlName="bonus">
                         <div *ngIf="ngFormSeller.submitted">
                             <small *ngIf="sfgBonus?.errors?.['required']" class="form-text text-danger">*Bônus é requirido!</small>
