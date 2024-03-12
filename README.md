@@ -26,30 +26,162 @@ It's free!
 
 1 - This is a monorepo, that is, it contains both the backend and the frontend in the same repository.
 
-2 -The Home screen is for UI issues only.
+2 - The Home screen is for UI issues only.
 
 3 - He is responsive.
 
-## Development server
+## Installers
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) - for the backend.
 
-## Code scaffolding
+[Node](https://nodejs.org/en/download) - to install Angular.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Functionalities
 
-## Build
+- Sellers
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    - Register a seller.
+    - Update a seller.
+    - Delete a seller.
+    - Consult a seller.
+    
+## API Sellers
 
-## Running unit tests
+This is a RESTful API developed in Spring Boot to manage sellers in a registration system. It provides endpoints to perform CRUD (Create, Read, Update, Delete) operations on sellers.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Endpoints
 
-## Running end-to-end tests
+- List all Sellers
+    ```
+    GET /sellers
+    ```
+    Returns a list of all registered sellers.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Get a Seller
+    ```
+    GET /sellers/{id}
+    ```
+    Returns the details of a specific seller based on the provided ID.
 
-## Further help
+- Register a new Seller
+    ```
+    POST /sellers
+    ```
+    Creates a new seller with the data provided in the request body.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Update a Seller
+    ```
+    PUT /sellers/{id}
+    
+    Updates an existing seller's details based on the provided ID and data provided in the request body.
+    ```
+
+- Remove a Seller
+     ```
+    DELETE /sellers/{id}
+    ```
+    Removes an existing seller based on the provided ID.
+    
+
+### Data Models
+
+- SellerRequestDTO
+     ```
+    {
+        "name": "string",
+        "salary": "double",
+        "bonus": "double",
+        "gender": "int"
+    }
+    ```
+
+- SellerResponseDTO
+     ```
+    {
+        "id": "long"
+        "name": "string",
+        "salary": "double",
+        "bonus": "double",
+        "gender": "int"
+    }
+    ```
+
+### Validation Constraints
+
+- Name: is mandatory and must have a minimum of 5 characters and a maximum of 255 characters.
+
+- Salary: is mandatory and must be greater than or equal to 1.
+
+- Bonus: is mandatory and must be between 0 and 100.
+
+- Gender: is mandatory and must be 0 (female) or 1 (male).
+
+## Getting Started
+
+### Prerequisites
+
+To run this project in development mode, you will need to have a basic environment to run an Angular and Java-Spring application, which can be found [here (Angular)](https://angular.io/quick-start) and [here (Java)](https://www.java.com/en/download/help/windows_manual_download.html).
+
+### Installing
+
+```
+$ git clone https://github.com/JoaoVictorCorrea/app-seller.git
+
+$ cd app-seller/frontend
+```
+
+**Installing dependencies**
+
+```
+$ npm install
+```
+
+### Running
+
+With all dependencies installed and the environment properly configured, you can now run the app:
+
+API - Java-Spring
+```
+$ cd ../backend
+
+With the left mouse button, select the AppSellerApplication.java file and run Java.
+```
+
+Angular
+```
+$ cd ../frontend
+
+$ ng build
+
+$ ng serve
+
+$ Navigate to `http://localhost:4200/`
+```
+
+## Built With
+
+- Frontend
+
+    - Angular
+    - TypeScript
+    - Ng-Bootstrap
+    
+- Backend
+
+    - Java
+    - Spring Boot
+    - Spring Web
+    - Spring Data JPA
+    - Spring Validation
+    - Spring DevTools
+    - Maven
+    
+## Contributing
+
+You can send how many PR's do you want, I'll be glad to analyse and accept them! And if you have any question about the project...
+
+Email-me: correa.joaov25@gmail.com
+
+Connect with me at [LinkedIn](https://www.linkedin.com/in/joaovcorrea/)
+
+Thank you!
