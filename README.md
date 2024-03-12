@@ -72,9 +72,8 @@ This is a RESTful API developed in Spring Boot to manage sellers in a registrati
 - Update a Seller
     ```
     PUT /sellers/{id}
-    
-    Updates an existing seller's details based on the provided ID and data provided in the request body.
     ```
+    Updates an existing seller's details based on the provided ID and data provided in the request body.
 
 - Remove a Seller
      ```
