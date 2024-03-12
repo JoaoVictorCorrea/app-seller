@@ -12,7 +12,7 @@ PS: Seller Registration was just the context chosen by me for this project, but 
 
 ## Why?
 
-This project is part of my personal portfolio and my assessment on the [BootcamoDevJr](https://bootcampdevjr.com/) course, so I'll be happy if you can give me any feedback on the project, code, structure or that you can report that could make me a better developer!
+This project is part of my personal portfolio and my assessment on the [BootcampDevJr](https://bootcampdevjr.com/) course, so I'll be happy if you can give me any feedback on the project, code, structure or that you can report that could make me a better developer!
 
 Email-me: correa.joaov25@gmail.com
 
