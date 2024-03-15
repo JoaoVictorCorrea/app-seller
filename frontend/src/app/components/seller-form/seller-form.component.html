@@ -66,18 +66,14 @@
     
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="form-check">
-                            <input class="form-check-input" name="gender" type="radio" value="0" id="radioGenderFemale" formControlName="gender">
-                            <label class="form-check-label" for="radioGenderFemale">
+                        <select class="form-select" aria-label="Selecione um Gênero" name="gender" id="selectGender" formControlName="gender">
+                            <option value="0">
                                 Feminino
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" name="gender" type="radio" value="1" id="radioGenderMale" formControlName="gender">
-                            <label class="form-check-label" for="radioGenderMale">
+                            </option>
+                            <option value="1">
                                 Masculino
-                            </label>
-                        </div>
+                            </option>
+                        </select>
                         <div *ngIf="ngFormSeller.submitted">
                             <small *ngIf="sfgGender?.errors?.['required']" class="form-text text-danger">*Gênero é requirido!</small>
                         </div>
